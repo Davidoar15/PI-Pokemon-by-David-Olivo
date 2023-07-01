@@ -1,0 +1,40 @@
+.cardContainer {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 3px;
+    padding: 5px;
+    transform: scale(0.95);
+    border: 10px ridge #ff0000;
+    background-color: gray;
+    transition: background-color 0.25s;
+}
+.cardContainer:hover {
+    background-color: aliceblue;
+}
+
+.cardImage {
+    width: 250px; 
+    height: 250px;
+    margin-left: 23px;
+    border: solid;
+    border-color: #fff;
+    border-radius: 20px;
+    transition: border-color 0.25s;
+}
+.cardImage:hover {
+    border-color: blue;
+}
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.h1 {
+    text-align: center;
+}
+
+.h2 {
+    text-align: center;
+}

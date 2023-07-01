@@ -1,0 +1,55 @@
+.Error {
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e37c7616-3c14-4939-be18-874912fe5fdb/d68x65i-9a58239f-6a65-45ae-947b-5c2d8cab721c.png/v1/fill/w_1131,h_707,q_70,strp/tribute_to_missingno_by_theemerald_d68x65i-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAwIiwicGF0aCI6IlwvZlwvZTM3Yzc2MTYtM2MxNC00OTM5LWJlMTgtODc0OTEyZmU1ZmRiXC9kNjh4NjVpLTlhNTgyMzlmLTZhNjUtNDVhZS05NDdiLTVjMmQ4Y2FiNzIxYy5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.DCh3UZPH0XEimXT0HiPOhAvSFRUa7AC67yP5X1u4XNY");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.divError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(167, 87, 160);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.divError:hover {
+    transform: translate(-50%,-50%) scale(1.4);
+}
+
+.divErrorText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.errorH1, 
+.errorP {
+    color: rgb(4, 34, 12)
+}
+
+.errorGift {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.errorGift img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 50px;
+}
