@@ -3,16 +3,20 @@ import { connect } from 'react-redux';
 import { addPokemon, getPokemonByName } from '../../redux/actions';
 import style from './SearchBar.module.css';
 
-function SearchBar({ pokemon, getPokemonByName, addPokemon }) {
+function SearchBar({ getPokemonByName, addPokemon, searchedPokemons }) {
 
   const [searchPkmn, setSearchPkmn] = useState('');
 
   const handleSearch = async (event) => {
     event.preventDefault()
-    await getPokemonByName(searchPkmn);
-    console.log(pokemon)
-    // const pkmnFound = pokemon[0];
-    addPokemon(pokemon);
+    const pkmnFound = await getPokemonByName(searchPkmn);
+    if (pkmnFound) {
+      if (searchedPokemons.includes(pkmnFound.id)) {
+        window.alert("This Pokémon has already been Searched");
+      } else {
+        addPokemon(pkmnFound);
+      }
+    }
     setSearchPkmn('');
   }
 
@@ -39,7 +43,7 @@ function SearchBar({ pokemon, getPokemonByName, addPokemon }) {
 
 const mapStateToProps = (state) => {
   return {
-    pokemon: state.pokemon
+    searchedPokemons: state.pokemons.map(pokemon => pokemon.id)
   };
 };
 

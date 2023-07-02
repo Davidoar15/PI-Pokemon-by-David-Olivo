@@ -1,6 +1,7 @@
 import { 
-  GET_POKEMON_BY_NAME, 
   GET_POKEMONS,
+  GET_POKEMON_BY_NAME, 
+  GET_POKEMON_BY_ID,
   FILTER_POKEMONS_BY_TYPE, 
   FILTER_POKEMONS_BY_ORIGIN,
   SORT_POKEMONS_BY_NAME,
@@ -12,6 +13,7 @@ import {
 const initialState = {
   pokemon: null,
   pokemons: [],
+  getPkmns: [],
   filteredPokemons: [],
   isFilterActive: false,
   currentPage: 1,
@@ -19,17 +21,17 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_POKEMON_BY_NAME:
+    case GET_POKEMONS:
+      return {
+        ...state,
+        getPkmns: action.payload
+      }
+      
+    case GET_POKEMON_BY_ID:
       return {
         ...state,
         pokemon: action.payload
       };
-
-    case GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: action.payload
-      }
 
     case FILTER_POKEMONS_BY_TYPE:
       if (action.payload === "") {
@@ -39,10 +41,15 @@ const reducer = (state = initialState, action) => {
           isFilterActive: false,
         };
       }
-      const filteredByType = state.pokemons.filter(pokemon => pokemon.types.includes(action.payload));
+      const allPkmnType = [...state.pokemons, ...state.getPkmns];
+      const filteredByType = allPkmnType.filter(pokemon => pokemon.types.includes(action.payload));
+      const uniqueFilteredByType = filteredByType.filter(
+        (pokemon, index, self) =>
+          index === self.findIndex(p => p.id === pokemon.id)
+      );
       return {
         ...state,
-        filteredPokemons: filteredByType,
+        filteredPokemons: uniqueFilteredByType,
         isFilterActive: true
       };
 
@@ -54,46 +61,61 @@ const reducer = (state = initialState, action) => {
           isFilterActive: false,
         };
       }
-      const filteredByOrigin = state.pokemons.filter((pokemon) => {
+      const allPkmnOrigin = [...state.pokemons, ...state.getPkmns];
+      const filteredByOrigin = allPkmnOrigin.filter((pokemon) => {
         if (typeof pokemon.id === 'string') {
           return action.payload === "DB";
         } else {
           return action.payload === "API";
         }
       });
+      const uniqueFilteredByOrigin = filteredByOrigin.filter(
+        (pokemon, index, self) =>
+          index === self.findIndex(p => p.id === pokemon.id)
+      );
       return {
         ...state,
-        filteredPokemons: filteredByOrigin,
+        filteredPokemons: uniqueFilteredByOrigin,
         isFilterActive: true
       };
 
     case SORT_POKEMONS_BY_NAME:
-      const allPokemons = [...state.pokemons]
-      const sortedByName = allPokemons.sort((a, b) => {
+      const sortedByName = [...state.pokemons, ...state.getPkmns].sort((a, b) => {
         if (action.payload === "A") {
           return a.name.localeCompare(b.name);
         } else if (action.payload === "D") {
           return b.name.localeCompare(a.name);
         } 
       });
+
+      const uniqueSortedByName = sortedByName.filter(
+        (pokemon, index, self) =>
+          index === self.findIndex((p) => p.id === pokemon.id)
+      );
+
       return {
         ...state,
-        pokemons: sortedByName,
+        pokemons: uniqueSortedByName,
       };
     
     case SORT_POKEMONS_BY_STAT:
       const { stat, order } = action.payload;
-      const allPkmn = [...state.pokemons];
-      const sortedByStat = allPkmn.sort((a, b) => {
+      const sortedByStat = [...state.pokemons, ...state.getPkmns].sort((a, b) => {
         if (order === 'asc') {
           return a[stat] - b[stat];
         } else {
           return b[stat] - a[stat];
         }
       });
+
+      const uniqueSortedByStat = sortedByStat.filter(
+        (pokemon, index, self) =>
+          index === self.findIndex((p) => p.id === pokemon.id)
+      );
+
       return {
         ...state,
-        pokemons: sortedByStat,
+        pokemons: uniqueSortedByStat,
       };
 
     case CHANGE_PAGE:
@@ -105,7 +127,7 @@ const reducer = (state = initialState, action) => {
     case ADD_POKEMON:
       return {
         ...state,
-        pokemons: [...state.pokemons, action.payload]
+        pokemons: [action.payload, ...state.pokemons]
       }
 
     default:

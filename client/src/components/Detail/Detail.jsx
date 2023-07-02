@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getPokemonByName } from '../../redux/actions';
+import { getPokemonByID } from '../../redux/actions';
 import style from './Detail.module.css';
 
-function Detail({ pokemon, getPokemonByName }) {
+function Detail({ pokemon, getPokemonByID }) {
   
-  const { formattedName } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    getPokemonByName(formattedName);
-  }, [formattedName]);
+    getPokemonByID(id);
+  }, [id]);
 
   if (!pokemon) {
     return (
@@ -24,7 +24,7 @@ function Detail({ pokemon, getPokemonByName }) {
   }
 
   const {
-    id,
+    name,
     image,
     types,
     hp,
@@ -48,10 +48,10 @@ function Detail({ pokemon, getPokemonByName }) {
       </div>
       <div className={style.detailConteiner}>
         <div>
-          <img className={style.img} src={image} alt={formattedName}/>
+          <img className={style.img} src={image} alt={name}/>
         </div>
         <div>
-          <h1>{formattedName}</h1>
+          <h1>{name}</h1>
           <h2>{id}</h2>
           <h2>{formattedTypes}</h2>
           <h2>HP: {hp}</h2>
@@ -76,7 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPokemonByName: (name) => dispatch(getPokemonByName(name))
+    getPokemonByID: (id) => dispatch(getPokemonByID(id))
   };
 };
 

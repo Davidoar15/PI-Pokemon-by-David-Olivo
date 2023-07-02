@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/detail/:formattedName' element={<Detail />} />
+        <Route path='/detail/:id' element={<Detail />} />
         <Route path='/form' element={<Form />} />
         <Route path='*' element={<Error />} />
       </Routes>

@@ -47,6 +47,7 @@ export const getPokemonByName = (name) => {
           type: 'GET_POKEMON_BY_NAME', 
           payload: pokemon
         });
+        return pokemon;
       } else {
         window.alert('Not Exist Pokémon with that Name');
       }
@@ -132,7 +133,7 @@ export const createPokemon = (pkmnFormData) => {
       try {
         const response = await axios.post(endpoint.pkmn, pkmnFormData);
         const newPkmn = response.data;
-        dispatch(addPokemon(newPkmn));
+        //dispatch(addPokemon(newPkmn));
       } catch (error) {
         console.error(error);
       }

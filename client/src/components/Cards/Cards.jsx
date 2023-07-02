@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { changePage } from '../../redux/actions';
 import Card from '../Card/Card';
@@ -11,8 +11,8 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
   const endIndex = startIndex + pageSize;
 
   const renderPokemons = isFilterActive
-    ? filteredPokemons.slice(startIndex, endIndex)
-    : pokemons.slice(startIndex, endIndex);
+  ? filteredPokemons.slice(startIndex, endIndex)
+  : pokemons.slice(startIndex, endIndex);
 
   /*const existingPokemon = pokemons.find((pokemon) => pokemon.id === searchedPokemon?.id);
   const updatedPokemons = existingPokemon 
@@ -37,7 +37,7 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
       </div>
       <div className={style.Cards}>
         {isFilterActive && renderPokemons.length === 0 
-          ? (<p>There is Not Results</p>)
+          ? (<p>There are No Results</p>)
           : (renderPokemons.map((pokemon) => (
               <Card 
                 key={pokemon.id}
@@ -52,16 +52,14 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
 
 const mapStateToProps = (state) => {
   return {
-    pokemons: state.pokemons,
     filteredPokemons: state.filteredPokemons,
     isFilterActive: state.isFilterActive,
-    //searchedPokemon: state.pokemon,
     currentPage: state.currentPage
   };
 };
 
 const mapDispatchToProps = {
-  changePage
+  changePage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);
