@@ -97,7 +97,7 @@ export default function validateForm(
     } else if (typeof numberWeight !== 'number') {
         errors.weight = "Weight must be Number";
     } else if (numberWeight <= 0) {
-        errors.weight = "Weight cannot be Negative or exactly equal to 0"
+        errors.weight = "Weight cannot be Negative or exactly equal to 0";
     };
 
     if (!image) {

@@ -16,21 +16,21 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-left: 18%;
+    margin-left: 15%;
     margin-right: 15%;
 }
 
 .formContainer {
     position: relative;
-    top: 30%;
+    top: 23%;
     left: 30%;
-    transform: translate(-30%, -30%);
+    transform: translate(-30%, -23%);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-left: 7%;
-    margin-right: 30%;
+    margin-right: 20%;
     overflow-y: auto; 
     max-height: 500px;
 }
@@ -55,7 +55,7 @@
 
 .labelHP {
     font-size: 16px;
-    color: green;
+    color: rgb(1, 80, 1);
     font-weight: 1000;
 }
 
@@ -106,7 +106,8 @@
 
 .labelTypeInfo {
     font-size: 16px;
-    color: rgb(124, 12, 115);
+    font-weight: 500;
+    color: rgb(100, 10, 93);
 }
 
 .oNormal {
@@ -219,6 +220,7 @@
     color: red;
     height: 28px;
     width: 75px;
+    margin-top: 4px;
     font-size: 15px;
     font-weight: 1000;
     background-color: #3d373c;

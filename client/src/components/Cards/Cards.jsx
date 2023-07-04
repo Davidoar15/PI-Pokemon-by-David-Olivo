@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { changePage } from '../../redux/actions';
 import Card from '../Card/Card';
@@ -49,6 +49,7 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
           Next page
         </button>
       </div>
+      
       <div className={style.Cards}>
         {isFilterActive && paginatedPokemons.length === 0
           ? <h2 className={style.h2Cards}>There are No Results</h2>

@@ -14,10 +14,10 @@ const endpoint = {
 }
 
 // Acción para obtener la lista de pokémon
-export const getPokemons = (page) => {
+export const getPokemons = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${endpoint.pkmn}?page=${page}`);
+      const response = await fetch(`${endpoint.pkmn}`);
       if (response.ok) {
         const pokemonsData = await response.json();
         dispatch({ 
@@ -46,8 +46,6 @@ export const getPokemonByName = (name) => {
           payload: pokemon
         });
         return pokemon;
-      } else {
-        window.alert('Not Exist Pokémon with that Name');
       }
     } catch (error) {
       console.error('Error searching Pokemon:', error);
@@ -110,6 +108,7 @@ export const sortPokemonsByStat = (stat, order) => {
   };
 };
 
+// Acción para cambiar de página en el Paginado de la lista principal
 export const changePage = (page) => {
   return {
     type: 'CHANGE_PAGE',
