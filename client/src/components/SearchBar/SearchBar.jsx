@@ -25,7 +25,7 @@ function SearchBar({ getPokemonByName, addPokemon, searchedPokemons }) {
   }
 
   return (
-    <div className="SearchBar">
+    <div className={style.searchBar}>
       <input
         className={style.searchInput}
         type="text"

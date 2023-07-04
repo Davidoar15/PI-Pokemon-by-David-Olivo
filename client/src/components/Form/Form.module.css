@@ -11,12 +11,236 @@
     height: 100%;
 }
 
+.presentationForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 18%;
+    margin-right: 15%;
+}
+
+.formContainer {
+    position: relative;
+    top: 30%;
+    left: 30%;
+    transform: translate(-30%, -30%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 7%;
+    margin-right: 30%;
+    overflow-y: auto; 
+    max-height: 500px;
+}
+
+.inputsForm {
+    background-color: rgb(185, 161, 161, 0.5);
+    border-radius: 10px;
+    border: 5px inset blue;
+    padding: 15px;
+}
+
+.h1Form {
+    background-color: rgb(179, 90, 179, 0.8);
+    border: 5px inset blue;
+    padding: 5px;
+}
+
+.labelNormal {
+    font-size: 16px;
+    font-weight: 1000;
+}
+
+.labelHP {
+    font-size: 16px;
+    color: green;
+    font-weight: 1000;
+}
+
+.labelAtk {
+    font-size: 16px;
+    color: red;
+    font-weight: 1000;
+}
+
+.labelDef {
+    font-size: 16px;
+    color: yellow;
+    font-weight: 1000;
+}
+
+.labelSpcAtk {
+    font-size: 16px;
+    color: orangered;
+    font-weight: 1000;
+}
+
+.labelSpcDef {
+    font-size: 16px;
+    color: greenyellow;
+    font-weight: 1000;
+}
+
+.labelSpeed {
+    font-size: 16px;
+    color: blue;
+    font-weight: 1000;
+}
+
+.labelTypes {
+    font-size: 16px;
+    background: linear-gradient(
+        yellow,
+        red,
+        blue,
+        green,
+        purple,
+        orangered
+    );
+    background-clip: text;
+    color: transparent;  
+    font-weight: 1000;
+}
+
+.labelTypeInfo {
+    font-size: 16px;
+    color: rgb(124, 12, 115);
+}
+
+.oNormal {
+    background-color: rgb(187, 172, 172);
+}
+
+.oGrass {
+    background-color: green;
+    color: white;
+}
+
+.oFire {
+    background-color: red;
+    color: white;
+}
+
+.oWater {
+    background-color: rgb(50, 50, 240);
+    color: white;
+}
+
+.oBug {
+    background-color: lawngreen;
+}
+
+.oPoison {
+    background-color: blueviolet;
+    color: white;
+}
+
+.oElectric {
+    background-color: yellow;
+}
+
+.oRock {
+    background-color: rgb(189, 121, 57);
+}
+
+.oGround {
+    background-color: rgb(189, 165, 57);
+}
+
+.oPsychic {
+    background-color: rgb(231, 21, 91);
+    color: white;
+}
+
+.oFighting {
+    background-color: rgb(185, 50, 1);
+    color: white;
+}
+
+.oDark {
+    background-color: rgb(32, 20, 20);
+    color: white;
+}
+
+.oFlying {
+    background-color: rgb(113, 113, 238);
+    color: white;
+}
+
+.oGhost {
+    background-color: rgb(75, 17, 129);
+    color: white;
+}
+
+.oIce {
+    background-color: aqua;
+}
+
+.oSteel {
+    background-color: gray;
+}
+
+.oDragon {
+    background-color: rgb(59, 32, 122);
+    color: white;
+}
+
+.oFairy {
+    background-color: rgb(230, 110, 150);
+}
+
+.oUnknown {
+    background-color: rgb(54, 52, 52);
+    color: white;
+}
+
+.oShadow {
+    background-color: black;
+    color: white;
+}
+
+.inputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.forInputs {
+    width: 300px;
+}
+
+.btnForm {
+    border-radius: 10px;
+    border: 2px solid white;
+    color: red;
+    height: 28px;
+    width: 75px;
+    font-size: 15px;
+    font-weight: 1000;
+    background-color: #3d373c;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+.btnForm:hover {
+    border-color: blue;
+}
+
 .imgContainer {
-    width: 250px;
-    height: 200px;
+    width: 350px;
+    height: 300px;
 }
 
 .imgForm {
     width: 100%;
     height: 100%;
+}
+
+.error {
+    color: red;
+    margin-top: 0;
+    margin-bottom: 0;
 }

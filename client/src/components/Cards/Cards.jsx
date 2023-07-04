@@ -10,40 +10,54 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
   const startIndex = (currentPage-1)*pageSize;
   const endIndex = startIndex + pageSize;
 
-  const renderPokemons = isFilterActive
-  ? filteredPokemons.slice(startIndex, endIndex)
-  : pokemons.slice(startIndex, endIndex);
+  /*useEffect(() => {
+    if (isFilterActive) {
+      const maxPage = Math.ceil(filteredPokemons.length / pageSize);
+      if (currentPage > maxPage) {
+        changePage(maxPage);
+      }
+    } else {
+      const maxPage = Math.ceil(pokemons.length / pageSize);
+      if (currentPage > maxPage) {
+        changePage(maxPage);
+      }
+    }
+  }, [pokemons, filteredPokemons, isFilterActive, currentPage, changePage]);*/
 
-  /*const existingPokemon = pokemons.find((pokemon) => pokemon.id === searchedPokemon?.id);
-  const updatedPokemons = existingPokemon 
-    ? [searchedPokemon, ...renderPokemons] 
-    : renderPokemons;*/
+  const renderPokemons = isFilterActive
+    ? filteredPokemons
+    : pokemons;
+
+  const paginatedPokemons = renderPokemons.slice(startIndex, endIndex);
 
   return (
     <div>
-      <div className={style.paginationButtons}>
-        <button
+      <div className={style.paginationBtn}>
+        <button className={style.pgnBtn}
           disabled={currentPage === 1}
           onClick={() => changePage(currentPage - 1)}
         >
-          Previous
+          Previous page
         </button>
-        <button
-          disabled={renderPokemons.length < pageSize}
+        <div className={style.nroPage}>
+          {currentPage}
+        </div>
+        <button className={style.pgnBtn}
+          disabled={endIndex >= renderPokemons.length}
           onClick={() => changePage(currentPage + 1)}
         >
-          Next
+          Next page
         </button>
       </div>
       <div className={style.Cards}>
-        {isFilterActive && renderPokemons.length === 0 
-          ? (<p>There are No Results</p>)
-          : (renderPokemons.map((pokemon) => (
-              <Card 
-                key={pokemon.id}
+        {isFilterActive && paginatedPokemons.length === 0
+          ? <h2 className={style.h2Cards}>There are No Results</h2>
+          : paginatedPokemons.map((pokemon, index) => (
+              <Card
+                key={index}
                 pokemon={pokemon}
               />
-            )))
+            ))
         }
       </div>
     </div>

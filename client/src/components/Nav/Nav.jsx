@@ -29,65 +29,75 @@ function Nav({ filterPokemonsByType, filterPokemonsByOrigin, sortPokemonsByName,
 
   return (
     <div className="Nav">
-      <div>
-        <NavLink to={'/form'}>
-          <button>Post a Pokémon</button>
-        </NavLink>
+
+      <div className={style.navContainer}>
+        <div >
+          <NavLink to={'/form'}>
+            <button className={style.btnToForm}>A New Pokémon?</button>
+          </NavLink>
+        </div>
+
+        <div>
+          <select className={style.filterOrder} onChange={handleTypeFilter} name='typeFilter'>
+            <option  value="">All Types</option>
+            <option className={style.oNormal} value="normal">Normal</option>
+            <option className={style.oGrass} value="grass">Grass</option>
+            <option className={style.oFire} value="fire">Fire</option>
+            <option className={style.oWater} value="water">Water</option>
+            <option className={style.oBug} value="bug">Bug</option>
+            <option className={style.oPoison} value="poison">Poison</option>
+            <option className={style.oElectric} value="electric">Electric</option>
+            <option className={style.oRock} value="rock">Rock</option>
+            <option className={style.oGround} value="ground">Ground</option>
+            <option className={style.oPsychic} value="psychic">Psychic</option>
+            <option className={style.oFighting} value="fighting">Fighting</option>
+            <option className={style.oDark} value="dark">Dark</option>
+            <option className={style.oFlying} value="flying">Flying</option>
+            <option className={style.oGhost} value="ghost">Ghost</option>
+            <option className={style.oIce} value="ice">Ice</option>
+            <option className={style.oSteel} value="steel">Steel</option>
+            <option className={style.oDragon} value="dragon">Dragon</option>
+            <option className={style.oFairy} value="fairy">Fairy</option>
+            <option className={style.oUnknown} value="unknown">Unknown</option>
+            <option className={style.oShadow} value="shadow">Shadow</option>
+          </select>
+
+          <select className={style.filterOrder} onChange={handleOriginFilter} name='originFilter'>
+            <option value="">Origin</option>
+            <option value="API">pokeAPI</option>
+            <option value="DB">DataBase</option>
+          </select>
+        </div>
+
+        <div>
+          <select className={style.filterOrder} onChange={handleNameOrder} name='nameOrder'>
+            <option value="">Alphabetic</option>
+            <option value="A">Ascending</option>
+            <option value="D">Descending</option>
+          </select>
+
+          <select className={style.filterOrder} onChange={handleStatOrder} name='statOrder'>
+            <option value="">Stats</option>
+            <option className={style.oHP} value="hp">HP</option>
+            <option className={style.oAtk} value="attack">Attack</option>
+            <option className={style.oDef} value="defense">Defense</option>
+            <option className={style.oSpcAtk} value="spcatk">Spc Atk</option>
+            <option className={style.oSpcDef} value="spcdef">Spc Def</option>
+            <option className={style.oSpeed} value="speed">Speed</option>
+          </select>
+        </div>
+
+        <div>
+          <SearchBar />
+        </div>
+
+      
+        <div>
+          <NavLink to={'/'}>
+            <button className={style.btnClose}>Close</button>
+          </NavLink>
+        </div>
       </div>
-
-      <div>
-        <select onChange={handleTypeFilter} name='typeFilter'>
-          <option value="">All Types</option>
-          <option value="normal">Normal</option>
-          <option value="grass">Grass</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-          <option value="bug">Bug</option>
-          <option value="poison">Poison</option>
-          <option value="electric">Electric</option>
-          <option value="rock">Rock</option>
-          <option value="ground">Ground</option>
-          <option value="psychic">Psychic</option>
-          <option value="fighting">Fighting</option>
-          <option value="dark">Dark</option>
-          <option value="flying">Flying</option>
-          <option value="ghost">Ghost</option>
-          <option value="ice">Ice</option>
-          <option value="steel">Steel</option>
-          <option value="dragon">Dragon</option>
-          <option value="fairy">Fairy</option>
-          <option value="unknown">Unknown</option>
-          <option value="shadow">Shadow</option>
-        </select>
-
-        <select onChange={handleOriginFilter} name='originFilter'>
-          <option value="">Origin</option>
-          <option value="API">pokeAPI</option>
-          <option value="DB">DataBase</option>
-        </select>
-
-        <SearchBar />
-
-        <select onChange={handleNameOrder} name='nameOrder'>
-          <option value="">Alphabetic</option>
-          <option value="A">Ascending</option>
-          <option value="D">Descending</option>
-        </select>
-
-        <select onChange={handleStatOrder} name='statOrder'>
-          <option value="">Stats</option>
-          <option value="hp">HP</option>
-          <option value="attack">Attack</option>
-          <option value="defense">Defense</option>
-          <option value="spcatk">Spc Atk</option>
-          <option value="spcdef">Spc Def</option>
-          <option value="speed">Speed</option>
-        </select>
-      </div>
-
-      <NavLink to={'/'}>
-        <button>Close</button>
-      </NavLink>
     </div>
   );
 }

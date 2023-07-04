@@ -6,7 +6,7 @@ function Error() {
   return (
     <div className={style.Error}>
       <NavLink to={'/home'}>
-        <button>Back</button>
+        <button className={style.btnBack}>Back</button>
       </NavLink>
       <div className={style.divError}>
         <div className={style.divErrorText}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Cards from '../Cards/Cards';
 import Nav from '../Nav/Nav';
@@ -6,12 +6,16 @@ import style from './Home.module.css';
 import { getPokemons } from '../../redux/actions';
 
 function Home({ pokemons, getPkmns, getPokemons }) {
+  const [initialFetch, setInitialFetch] = useState(false);
 
   useEffect(() => {
-    getPokemons();
-  }, [getPokemons]);
+    if (!initialFetch && !getPkmns.length) {
+      getPokemons();
+      setInitialFetch(true);
+    }
+  }, [getPkmns, getPokemons, initialFetch]);
 
-  const allPokemons = [...pokemons, ...getPkmns];
+  const allPokemons = [...new Set([...pokemons, ...getPkmns])];
 
   return (
     <div className={style.Home}>

@@ -8,8 +8,6 @@ export const SORT_POKEMONS_BY_NAME = 'SORT_POKEMONS_BY_NAME';
 export const SORT_POKEMONS_BY_STAT = 'SORT_POKEMONS_BY_STAT';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_POKEMON = 'ADD_POKEMON';
-//export const CREATE_POKEMON = 'CREATE_POKEMON';
-//export const GET_TYPES = 'GET_TYPES';
 const endpoint = {
     pkmn: "http://localhost:3001/pokemons",
     types: "http://localhost:3001/types"
@@ -132,30 +130,8 @@ export const createPokemon = (pkmnFormData) => {
     return async (dispatch) => {
       try {
         const response = await axios.post(endpoint.pkmn, pkmnFormData);
-        const newPkmn = response.data;
-        //dispatch(addPokemon(newPkmn));
       } catch (error) {
         console.error(error);
       }
     };
 };
-
-// Acción para obtener la lista de tipos de pokémon
-/*export const getTypes = () => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get(endpoint.types);
-      if (response.status === 200) {
-        const typesData = response.data;
-        dispatch({
-          type: 'GET_TYPES',
-          payload: typesData,
-        });
-      } else {
-        throw new Error('Failed to fetch Pokémon types');
-      }
-    } catch (error) {
-      console.error('Error fetching Pokémon types:', error);
-    }
-  };
-};*/

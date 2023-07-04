@@ -2,5 +2,38 @@
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto; 
-    max-height: 500px;
+    max-height: 545px;
+}
+
+.paginationBtn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.pgnBtn {
+    border-radius: 10px;
+    border: 2px solid white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 1000;
+    cursor: pointer;
+}
+
+.nroPage {
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    font-weight: 650;
+    border: 2px solid white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.h2Cards {
+    width: 100%;
+    text-align: center;
 }
