@@ -29,9 +29,7 @@ async function getPokemonByID(req, res) {
       }
     } else {
       // Si no existe en la DB, obtener los datos desde la API
-      const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${idPokemon}`
-      );
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
       const { id, name, sprites, stats, height, weight } = response.data;
 
       const image = sprites.other["official-artwork"].front_default;
@@ -46,14 +44,10 @@ async function getPokemonByID(req, res) {
       const defenseStat = stats.find((stat) => stat.stat.name === "defense");
       const defense = defenseStat.base_stat;
 
-      const spcatkStat = stats.find(
-        (stat) => stat.stat.name === "special-attack"
-      );
+      const spcatkStat = stats.find((stat) => stat.stat.name === "special-attack");
       const spcatk = spcatkStat.base_stat;
 
-      const spcdefStat = stats.find(
-        (stat) => stat.stat.name === "special-defense"
-      );
+      const spcdefStat = stats.find((stat) => stat.stat.name === "special-defense");
       const spcdef = spcdefStat.base_stat;
 
       const speedStat = stats.find((stat) => stat.stat.name === "speed");

@@ -49,6 +49,13 @@
 .imgPkmn {
     border: 5px solid blue;
     background-color: rgba(81, 148, 248, 0.5);
+    width: 475px;
+    height: 475px;
+}
+
+.imgDetail {
+    max-width: 475px;
+    max-height: 475px;
 }
 
 .details {

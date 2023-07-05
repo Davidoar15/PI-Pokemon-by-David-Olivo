@@ -51,30 +51,30 @@ function Form({ createPokemon, getPokemonByName }) {
     );
     setErrors(errors);
 
-    if (Object.keys(errors).length === 0) {
-      const existingPkmn = await getPokemonByName(pkmnFormData.name);
-      if (existingPkmn) {
-        alert(`The Pokémon "${pkmnFormData.name}" already Exists`);
-      } else {
-        createPokemon(pkmnFormData);
-        alert("Data Completed Correctly. New Pokémon Registered");
-        setPkmnFormData({ 
-          name: '',
-          hp: 0,
-          attack: 0,
-          defense: 0,
-          spcatk: 0,
-          spcdef: 0,
-          speed: 0,
-          height: 0,
-          weight: 0,
-          image: '',
-          types: []
-        });
-        setErrors({});
-      }
+    const existingPkmn = await getPokemonByName(pkmnFormData.name);
+    if (existingPkmn) {
+      alert(`The Pokémon "${pkmnFormData.name}" already Exists`);
     } else {
-      alert("Data is Incompleted. All fields must be filled");
+      if (Object.keys(errors).length === 0) {
+          createPokemon(pkmnFormData);
+          alert("Data Completed Correctly. New Pokémon Registered!");
+          setPkmnFormData({ 
+            name: '',
+            hp: 0,
+            attack: 0,
+            defense: 0,
+            spcatk: 0,
+            spcdef: 0,
+            speed: 0,
+            height: 0,
+            weight: 0,
+            image: '',
+            types: []
+          });
+          setErrors({});
+      } else {
+        alert("Data is Incompleted. All fields must be filled Correctly");
+      }
     }
   }
 

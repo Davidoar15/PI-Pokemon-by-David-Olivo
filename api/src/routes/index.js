@@ -8,13 +8,7 @@ const { getTypes } = require('../controllers/getTypes');
 // Ejemplo: const authRouter = require('./auth.js');
 
 
-const router = Router();
-
-// Agrega el middleware no-cache
-/*function noCacheMiddleware(req, res, next) {
-    res.setHeader('Cache-Control', 'no-store');
-    next();
-}*/
+const router = Router()
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

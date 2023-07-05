@@ -1,15 +1,17 @@
-const { Sequelize } = require("sequelize");
+const { Op } = require("sequelize");
 const { Pokemon, Type } = require("../db");
 
 function getPokemonByName(req, res) {
   const { name } = req.query;
+  formattedName = name.toLowerCase();
 
+  // Buscar en la DB
   Pokemon.findAll({
-    // Buscar en la DB
-    where: Sequelize.where(
-      Sequelize.fn("lower", Sequelize.col("pokemon.name")),
-      Sequelize.fn("lower", name)
-    ),
+    where: {
+      name: {
+        [Op.iLike]: formattedName
+      }
+    },
     include: [{ model: Type, as: "types" }],
   })
     .then((pokemonDB) => {

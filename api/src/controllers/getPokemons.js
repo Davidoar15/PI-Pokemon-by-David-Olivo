@@ -10,7 +10,7 @@ async function getPokemons(req, res) {
           const { id, name, sprites, stats, height, weight } = response.data;
 
           const image = sprites.other['official-artwork'].front_default;
-          const types = response.data.types.map((typeData) => typeData.type.name);
+          const types = response.data.types.map((type) => type.type.name);
 
           const hpStat = stats.find((stat) => stat.stat.name === 'hp');
           const hp = hpStat.base_stat;
@@ -47,7 +47,7 @@ async function getPokemons(req, res) {
         });
 
         const pokemonData = await Promise.all(pokemonPromises);
-        res.setHeader('Cache-Control', 'no-store');
+        //res.setHeader('Cache-Control', 'no-store');
         return pokemonData 
           ? res.status(200).json(pokemonData)
           : res.status(404).send("Data Not Found");
@@ -56,16 +56,7 @@ async function getPokemons(req, res) {
         return res.status(500).json({ message: 'Internal server error' });
       }
 };
-//recordar ver que datos estas trayendo
+
 module.exports = {
     getPokemons,
 };
-
-/*
-id, 
-name, 
-sprites.official-artwork
-stats
-height
-weight
-*/

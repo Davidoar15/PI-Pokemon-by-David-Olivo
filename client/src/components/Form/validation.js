@@ -22,9 +22,10 @@ export default function validateForm(
         errors.name = "This Name is too Long (max. 40 characters)";
     };
 
+    const hasDecimalHp = hp.toString().includes(".");
     if (!hp) {
         errors.hp = "Stats are required";
-    } else if (Number.isInteger(hp)) {
+    } else if (hasDecimalHp) {
         errors.hp = "Stats must be Integer Numbers";
     } else if (hp <= 0) {
         errors.hp = "Stats cannot be Negative or equal to 0";
@@ -32,9 +33,10 @@ export default function validateForm(
         errors.hp = "This is Terrifying! No Pokémon have that Power"
     };
 
+    const hasDecimalAtk = attack.toString().includes(".");
     if (!attack) {
         errors.attack = "Stats are required";
-    } else if (Number.isInteger(attack)) {
+    } else if (hasDecimalAtk) {
         errors.attack = "Stats must be Integer Numbers";
     } else if (attack <= 0) {
         errors.attack = "Stats cannot be Negative or equal to 0";
@@ -42,9 +44,10 @@ export default function validateForm(
         errors.attack = "This is Terrifying! No Pokémon have that Power"
     };
 
+    const hasDecimalDef = defense.toString().includes(".");
     if (!defense) {
         errors.defense = "Stats are required";
-    } else if (Number.isInteger(defense)) {
+    } else if (hasDecimalDef) {
         errors.defense = "Stats must be Integer Numbers";
     } else if (defense <= 0) {
         errors.defense = "Stats cannot be Negative or equal to 0"
@@ -52,9 +55,10 @@ export default function validateForm(
         errors.defense = "This is Terrifying! No Pokémon have that Power"
     };
 
+    const hasDecimalSpcAtk = spcatk.toString().includes(".");
     if (!spcatk) {
         errors.spcatk = "Stats are required";
-    } else if (Number.isInteger(spcatk)) {
+    } else if (hasDecimalSpcAtk) {
         errors.spcatk = "Stats must be Integer Numbers";
     } else if (spcatk <= 0) {
         errors.spcatk = "Stats cannot be Negative or equal to 0"
@@ -62,9 +66,10 @@ export default function validateForm(
         errors.spcatk = "This is Terrifying! No Pokémon have that Power"
     };
 
+    const hasDecimalSpcDef = spcdef.toString().includes(".");
     if (!spcdef) {
         errors.spcdef = "Stats are required";
-    } else if (Number.isInteger(spcdef)) {
+    } else if (hasDecimalSpcDef) {
         errors.spcdef = "Stats must be Integer Numbers";
     } else if (spcdef <= 0) {
         errors.spcdef = "Stats cannot be Negative or equal to 0"
@@ -72,9 +77,10 @@ export default function validateForm(
         errors.spcdef = "This is Terrifying! No Pokémon have that Power"
     };
 
+    const hasDecimalSpeed = speed.toString().includes(".");
     if (!speed) {
         errors.speed = "Stats are required";
-    } else if (Number.isInteger(speed)) {
+    } else if (hasDecimalSpeed) {
         errors.speed = "Stats must be Integer Numbers";
     } else if (speed <= 0) {
         errors.speed = "Stats cannot be Negative or equal to 0"
@@ -83,20 +89,20 @@ export default function validateForm(
     };
 
     const numberHeight = parseFloat(height)
-    if (!numberHeight) {
+    if (!height) {
         errors.height = "Height are required";
     } else if (typeof numberHeight !== 'number') {
         errors.height = "Height must be Number";
-    } else if (numberHeight <= 0) {
+    } else if (height <= 0) {
         errors.height = "Height cannot be Negative or exactly equal to 0"
     };
 
     const numberWeight = parseFloat(weight)
-    if (!numberWeight) {
+    if (!weight) {
         errors.weight = "Weight are required";
     } else if (typeof numberWeight !== 'number') {
         errors.weight = "Weight must be Number";
-    } else if (numberWeight <= 0) {
+    } else if (weight <= 0) {
         errors.weight = "Weight cannot be Negative or exactly equal to 0";
     };
 
