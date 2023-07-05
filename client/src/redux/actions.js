@@ -17,9 +17,9 @@ const endpoint = {
 export const getPokemons = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${endpoint.pkmn}`);
-      if (response.ok) {
-        const pokemonsData = await response.json();
+      const response = await axios.get(`${endpoint.pkmn}`);
+      if (response.status === 200) {
+        const pokemonsData = response.data;
         dispatch({ 
           type: 'GET_POKEMONS', 
           payload: pokemonsData 
@@ -37,9 +37,9 @@ export const getPokemons = () => {
 export const getPokemonByName = (name) => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${endpoint.pkmn}/name?name=${name}`);
-      if (response.ok) {
-        const pokemonData = await response.json();
+      const response = await axios.get(`${endpoint.pkmn}/name?name=${name}`);
+      if (response.status === 200) {
+        const pokemonData = response.data;
         const pokemon = pokemonData[0];
         dispatch({ 
           type: 'GET_POKEMON_BY_NAME', 

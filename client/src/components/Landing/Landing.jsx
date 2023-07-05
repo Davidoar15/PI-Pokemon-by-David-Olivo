@@ -22,9 +22,9 @@ function Landing() {
           <p className={style.pWelcome}>
             Hello. This is a Page for Knowing more about the Fantastic 
             and Powerful creatures: Pokémon! 
-            Doing click in the button "Start", You going to find a list 
+            Doing click in the button "Start" you going to find a list 
             of various Pokémon, can see their caracteristics, search a 
-            Pokémon that not be in the list and other interesting things.
+            Pokémon that not be in the list and others interesting things.
             Enjoy it!
           </p>
         </div>
