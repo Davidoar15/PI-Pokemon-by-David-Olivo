@@ -72,8 +72,8 @@ function Nav({ filterPokemonsByType, filterPokemonsByOrigin, sortPokemonsByName,
         <div>
           <select className={style.filterOrder} onChange={handleNameOrder} name='nameOrder'>
             <option value="">Alphabetic</option>
-            <option value="A">Ascending</option>
-            <option value="D">Descending</option>
+            <option value="A">A - Z</option>
+            <option value="D">Z - A</option>
           </select>
 
           <select className={style.filterOrder} onChange={handleStatOrder} name='statOrder'>

@@ -7,7 +7,7 @@ async function postPokemon(req, res) {
             return res.status(401).send("Missing Data");
         }
 
-        const newPokemon = await Pokemon.create({ // Crear al Pokemon en la DB
+        const newPokemon = await Pokemon.create({ 
             name, 
             image, 
             types, 
@@ -21,17 +21,17 @@ async function postPokemon(req, res) {
             weight
         });
                 
-        const existingTypes = await Type.findAll({ // Buscar los tipos existentes en la DB
+        const existingTypes = await Type.findAll({ 
             where: { name: types }
         });
-        const newTypes = types.filter((typeName) => { // Crear nuevos tipos si no existen en la DB
+        const newTypes = types.filter((typeName) => { 
             return !existingTypes.some((type) => type.name === typeName);
         });
         const createdTypes = await Type.bulkCreate(
             newTypes.map((typeName) => ({ name: typeName }))
         );
-        const allTypes = [...existingTypes, ...createdTypes]; // Combinar los tipos existentes y los recién creados
-        await newPokemon.setTypes(allTypes); // Establecer las asociaciones entre el nuevo Pokémon y los tipos
+        const allTypes = [...existingTypes, ...createdTypes]; 
+        await newPokemon.setTypes(allTypes); 
 
         return res.status(201).json(newPokemon);
     } catch(error) {

@@ -8,10 +8,8 @@ async function getPokemonByID(req, res) {
     let pokemonData;
     
     if (idPokemon.length === 36) {
-      // Verificar si el Pokémon existe en la DB
       const pokemonDB = await Pokemon.findByPk(idPokemon, { include: Type });
       if (pokemonDB) {
-        // Si existe en la DB, obtener los datos de la DB
         pokemonData = {
           id: pokemonDB.id,
           name: pokemonDB.name,
@@ -28,7 +26,6 @@ async function getPokemonByID(req, res) {
         };
       }
     } else {
-      // Si no existe en la DB, obtener los datos desde la API
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
       const { id, name, sprites, stats, height, weight } = response.data;
 

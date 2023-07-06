@@ -20,8 +20,8 @@ function Landing() {
       <div className={style.infoLanding}>
         <div className={style.infoWelcome}>
           <p className={style.pWelcome}>
-            Hello. This is a Page for Knowing more about the Fantastic 
-            and Powerful creatures: Pokémon! 
+            Hello!. This is a Single Page Application for Knowing more 
+            about the Fantastic and Powerful creatures: Pokémon! 
             Doing click in the button "Start" you going to find a list 
             of various Pokémon, can see their caracteristics, search a 
             Pokémon that not be in the list and others interesting things.

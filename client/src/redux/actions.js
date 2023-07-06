@@ -1,6 +1,5 @@
 import axios from "axios";
 export const GET_POKEMONS = 'GET_POKEMONS';
-export const GET_POKEMON_BY_NAME = 'GET_POKEMON_BY_NAME';
 export const GET_POKEMON_BY_ID = 'GET_POKEMON_BY_ID';
 export const FILTER_POKEMONS_BY_TYPE = 'FILTER_POKEMONS_BY_TYPE';
 export const FILTER_POKEMONS_BY_ORIGIN = 'FILTER_POKEMONS_BY_ORIGIN';
@@ -13,7 +12,6 @@ const endpoint = {
     types: "http://localhost:3001/types"
 }
 
-// Acción para obtener la lista de pokémon
 export const getPokemons = () => {
   return async (dispatch) => {
     try {
@@ -33,7 +31,6 @@ export const getPokemons = () => {
   };
 };
 
-// Acción para obtener un pokémon por su nombre
 export const getPokemonByName = (name) => {
   return async (dispatch) => {
     try {
@@ -53,7 +50,6 @@ export const getPokemonByName = (name) => {
   };
 };
 
-// Acción para obtener un pokémon por su ID
 export const getPokemonByID = (id) => {
   return async (dispatch) => {
     try {
@@ -73,7 +69,6 @@ export const getPokemonByID = (id) => {
   };
 };
 
-// Acción para filtrar los Pokémon por tipo
 export const filterPokemonsByType = (type) => {
   return {
     type: 'FILTER_POKEMONS_BY_TYPE',
@@ -81,7 +76,6 @@ export const filterPokemonsByType = (type) => {
   };
 };
 
-// Acción para filtrar los Pokémon por origen
 export const filterPokemonsByOrigin = (origin) => {
   return {
     type: 'FILTER_POKEMONS_BY_ORIGIN',
@@ -89,7 +83,6 @@ export const filterPokemonsByOrigin = (origin) => {
   };
 };
 
-// Acción para ordenar los Pokémon por nombre
 export const sortPokemonsByName = (order) => {
   return {
     type: SORT_POKEMONS_BY_NAME,
@@ -97,7 +90,6 @@ export const sortPokemonsByName = (order) => {
   };
 };
 
-// Acción para ordenar los Pokémon por stat
 export const sortPokemonsByStat = (stat, order) => {
   return {
     type: SORT_POKEMONS_BY_STAT,
@@ -108,7 +100,6 @@ export const sortPokemonsByStat = (stat, order) => {
   };
 };
 
-// Acción para cambiar de página en el Paginado de la lista principal
 export const changePage = (page) => {
   return {
     type: 'CHANGE_PAGE',
@@ -116,7 +107,6 @@ export const changePage = (page) => {
   };
 };
 
-// Acción para agregar un Pokémon a la lista principal
 export const addPokemon = (pokemon) => {
   return {
     type: 'ADD_POKEMON',
@@ -124,7 +114,6 @@ export const addPokemon = (pokemon) => {
   };
 };
 
-// Acción para crear un nuevo pokémon
 export const createPokemon = (pkmnFormData) => {
     return async (dispatch) => {
       try {

@@ -6,10 +6,8 @@ async function getTypes(req, res) {
     const response = await axios.get("https://pokeapi.co/api/v2/type");
     const typesData = response.data.results;
 
-    // Obtener los nombres de los tipos desde la respuesta de la API
     const typeNames = typesData.map((typeData) => typeData.name);
 
-    // Buscar o crear los tipos en la base de datos
     const types = await Promise.all(
       typeNames.map((typeName) =>
         Type.findOrCreate({
@@ -20,7 +18,6 @@ async function getTypes(req, res) {
       )
     );
 
-    // Obtener solo los tipos creados o encontrados
     const foundTypes = types.map(([type]) => type);
 
     return foundTypes.length > 0

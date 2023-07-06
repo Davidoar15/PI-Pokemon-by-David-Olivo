@@ -5,7 +5,6 @@ function getPokemonByName(req, res) {
   const { name } = req.query;
   formattedName = name.toLowerCase();
 
-  // Buscar en la DB
   Pokemon.findAll({
     where: {
       name: {
@@ -16,7 +15,6 @@ function getPokemonByName(req, res) {
   })
     .then((pokemonDB) => {
       if (pokemonDB.length > 0) {
-        // Pokemon encontrados en la DB
         const pokemonData = pokemonDB.map((pokemon) => ({
           id: pokemon.id,
           name: pokemon.name,
@@ -35,7 +33,6 @@ function getPokemonByName(req, res) {
           ? res.status(200).json(pokemonData)
           : res.status(404).send(`${name} Not Found in DataBase`);
       } else {
-        // Si no se encuentra en la DB, buscar en la API
         fetch(`https://pokeapi.co/api/v2/pokemon/${formattedName}`)
           .then((response) => {
             if (response.ok) {
@@ -62,7 +59,6 @@ function getPokemonByName(req, res) {
             res.status(200).json([pokemon]);
           })
           .catch((error) => {
-            // No se encuentra el pokemon en la API
             return res.status(404).send(`${name} Not Found`);
           });
       }
