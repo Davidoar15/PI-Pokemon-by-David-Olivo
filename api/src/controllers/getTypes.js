@@ -23,7 +23,6 @@ async function getTypes(req, res) {
     // Obtener solo los tipos creados o encontrados
     const foundTypes = types.map(([type]) => type);
 
-    // Enviar respuesta al cliente
     return foundTypes.length > 0
       ? res.status(200).json(foundTypes)
       : res.status(404).send("Types Not Found");

@@ -31,13 +31,12 @@ function getPokemonByName(req, res) {
           height: pokemon.height,
           weight: pokemon.weight,
         }));
-        res.setHeader('Cache-Control', 'no-store');
         return pokemonData
           ? res.status(200).json(pokemonData)
           : res.status(404).send(`${name} Not Found in DataBase`);
       } else {
         // Si no se encuentra en la DB, buscar en la API
-        fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
+        fetch(`https://pokeapi.co/api/v2/pokemon/${formattedName}`)
           .then((response) => {
             if (response.ok) {
               return response.json();

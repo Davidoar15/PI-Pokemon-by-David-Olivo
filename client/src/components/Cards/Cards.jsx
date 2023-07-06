@@ -10,20 +10,6 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
   const startIndex = (currentPage-1)*pageSize;
   const endIndex = startIndex + pageSize;
 
-  /*useEffect(() => {
-    if (isFilterActive) {
-      const maxPage = Math.ceil(filteredPokemons.length / pageSize);
-      if (currentPage > maxPage) {
-        changePage(maxPage);
-      }
-    } else {
-      const maxPage = Math.ceil(pokemons.length / pageSize);
-      if (currentPage > maxPage) {
-        changePage(maxPage);
-      }
-    }
-  }, [pokemons, filteredPokemons, isFilterActive, currentPage, changePage]);*/
-
   const renderPokemons = isFilterActive
     ? filteredPokemons
     : pokemons;
@@ -73,8 +59,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  changePage,
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changePage: (page) => dispatch(changePage(page)),
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);

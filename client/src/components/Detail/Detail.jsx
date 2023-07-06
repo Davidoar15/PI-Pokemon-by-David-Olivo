@@ -37,7 +37,7 @@ function Detail({ pokemon, getPokemonByID }) {
     weight
   } = pokemon;
 
-  const formattedName = name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formattedName = name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   const formattedTypes = types.map(type => type.charAt(0).toUpperCase() + type.slice(1)).join(' ');
 
   return (
@@ -54,7 +54,7 @@ function Detail({ pokemon, getPokemonByID }) {
         <div className={style.details}>
           <h1 className={style.h1Detail}>{formattedName}</h1>
           <h2 className={style.h2DetailID}>ID: {id}</h2>
-          <h2 className={style.h2DetailTypes}>Typing: {formattedTypes}</h2>
+          <h2 className={style.h2DetailTypes}>{formattedTypes}</h2>
           <h2 className={style.h2DetailHP}>HP: {hp}</h2>
           <h2 className={style.h2DetailAttack}>Attack: {attack}</h2>
           <h2 className={style.h2DetailDefense}>Defense: {defense}</h2>

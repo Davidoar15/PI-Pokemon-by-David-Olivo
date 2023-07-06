@@ -102,4 +102,13 @@ function Nav({ filterPokemonsByType, filterPokemonsByOrigin, sortPokemonsByName,
   );
 }
 
-export default connect(null, { filterPokemonsByType, filterPokemonsByOrigin, sortPokemonsByName, sortPokemonsByStat })(Nav);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterPokemonsByType: (type) => dispatch(filterPokemonsByType(type)),
+    filterPokemonsByOrigin: (origin) => dispatch(filterPokemonsByOrigin(origin)),
+    sortPokemonsByName: (order) => dispatch(sortPokemonsByName(order)),
+    sortPokemonsByStat: (order, stat) => dispatch(sortPokemonsByStat(order, stat))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Nav);

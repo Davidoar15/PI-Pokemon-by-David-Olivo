@@ -81,7 +81,7 @@ export const filterPokemonsByType = (type) => {
   };
 };
 
-// Acción para filtrar los Pokémon por origen (API o DB)
+// Acción para filtrar los Pokémon por origen
 export const filterPokemonsByOrigin = (origin) => {
   return {
     type: 'FILTER_POKEMONS_BY_ORIGIN',

@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
       const filteredByType = allPkmnType.filter(pokemon => pokemon.types.includes(action.payload));
       const uniqueFilteredByType = filteredByType.filter(
         (pokemon, index, self) =>
-          index === self.findIndex(p => p.id === pokemon.id)
+          index === self.findIndex(pkmn => pkmn.id === pokemon.id)
       );
       return {
         ...state,
@@ -73,7 +73,7 @@ const reducer = (state = initialState, action) => {
       });
       const uniqueFilteredByOrigin = filteredByOrigin.filter(
         (pokemon, index, self) =>
-          index === self.findIndex(p => p.id === pokemon.id)
+          index === self.findIndex(pkmn => pkmn.id === pokemon.id)
       );
       return {
         ...state,
@@ -104,10 +104,6 @@ const reducer = (state = initialState, action) => {
           return b.name.localeCompare(a.name);
         } 
       });
-      // const uniqueSortedByName = sortedByName.filter(
-      //   (pokemon, index, self) =>
-      //     index === self.findIndex((p) => p.id === pokemon.id)
-      // );
 
       return {
         ...state,
@@ -139,10 +135,6 @@ const reducer = (state = initialState, action) => {
           return b[stat] - a[stat];
         }
       });
-      // const uniqueSortedByStat = sortedByStat.filter(
-      //   (pokemon, index, self) =>
-      //     index === self.findIndex((p) => p.id === pokemon.id)
-      // );
 
       return {
         ...state,
