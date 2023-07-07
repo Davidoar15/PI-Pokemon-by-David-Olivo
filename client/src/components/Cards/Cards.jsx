@@ -15,6 +15,23 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
     : pokemons;
 
   const paginatedPokemons = renderPokemons.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(renderPokemons.length/pageSize);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          className={currentPage === i ? style.nroPageActive : style.nroPage}
+          onClick={() => changePage(i)}
+        >
+          {i}
+        </button>
+      );
+    }
+    return (pageNumbers);
+  };
 
   return (
     <div>
@@ -25,9 +42,7 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
         >
           Previous page
         </button>
-        <div className={style.nroPage}>
-          {currentPage}
-        </div>
+
         <button className={style.pgnBtn}
           disabled={endIndex >= renderPokemons.length}
           onClick={() => changePage(currentPage + 1)}
@@ -36,6 +51,10 @@ function Cards({ pokemons, filteredPokemons, isFilterActive, currentPage, change
         </button>
       </div>
       
+      <div className={style.renderBtn}>
+          {renderPageNumbers()}
+      </div>
+
       <div className={style.Cards}>
         {isFilterActive && paginatedPokemons.length === 0
           ? <h2 className={style.h2Cards}>There are No Results</h2>

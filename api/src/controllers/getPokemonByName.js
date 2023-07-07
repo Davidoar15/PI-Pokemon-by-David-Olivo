@@ -8,7 +8,7 @@ function getPokemonByName(req, res) {
   Pokemon.findAll({
     where: {
       name: {
-        [Op.iLike]: formattedName
+        [Op.iLike]: `%${formattedName}%`
       }
     },
     include: [{ model: Type, as: "types" }],
