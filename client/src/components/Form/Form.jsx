@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { createPokemon, getPokemonByName } from '../../redux/actions';
+import { createPokemon, getPkmnName } from '../../redux/actions';
 import style from './Form.module.css';
 import validateForm from './validation';
 
-function Form({ createPokemon, getPokemonByName }) {
+function Form({ createPokemon, getPkmnName }) {
 
   const [pkmnFormData, setPkmnFormData] = useState({
     name: '',
@@ -50,10 +50,10 @@ function Form({ createPokemon, getPokemonByName }) {
       pkmnFormData.types,
     );
     setErrors(errors);
-
-    const existingPkmn = await getPokemonByName(pkmnFormData.name);
+    
+    const existingPkmn = await getPkmnName(pkmnFormData.name);
     if (existingPkmn) {
-      alert(`The Pokémon "${pkmnFormData.name}" already Exists`);
+      window.alert(`The Pokémon "${pkmnFormData.name}" already Exists`)
     } else {
       if (Object.keys(errors).length === 0) {
           createPokemon(pkmnFormData);
@@ -314,7 +314,7 @@ function Form({ createPokemon, getPokemonByName }) {
 const mapDispatchToProps = (dispatch) => {
   return {
     createPokemon: (pkmnFormData) => dispatch(createPokemon(pkmnFormData)),
-    getPokemonByName: (name) => dispatch(getPokemonByName(name))
+    getPkmnName: (name) => dispatch(getPkmnName(name))
   };
 };
 

@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 import { addPokemon, getPokemonByName } from '../../redux/actions';
 import style from './SearchBar.module.css';
 
-function SearchBar({ getPokemonByName, addPokemon, searchedPkmn }) {
+function SearchBar({ getPokemonByName, addPokemon }) {
 
   const [searchPkmn, setSearchPkmn] = useState('');
 
   const handleSearch = async (event) => {
     event.preventDefault()
     const pkmnFound = await getPokemonByName(searchPkmn);
-    if (!pkmnFound) {
+    if (pkmnFound.length === 0) {
+      window.alert('No matches for this Search')
+    } else {
+      addPokemon(pkmnFound);
+    }
+    /*if (!pkmnFound) {
       window.alert('Not Exist Pokémon with that Name');
     } else {
       if (searchedPkmn.includes(pkmnFound.id)) {
@@ -18,7 +23,7 @@ function SearchBar({ getPokemonByName, addPokemon, searchedPkmn }) {
       } else {
         addPokemon(pkmnFound);
       }
-    }
+    }*/
     setSearchPkmn('');
   }
 
@@ -43,11 +48,11 @@ function SearchBar({ getPokemonByName, addPokemon, searchedPkmn }) {
   );
 }
 
-const mapStateToProps = (state) => {
+/*const mapStateToProps = (state) => {
   return {
     searchedPkmn: state.pokemons.map(pokemon => pokemon.id)
   };
-};
+};*/
 
 const mapDispatchtoProps = (dispatch) => {
   return {
@@ -56,4 +61,4 @@ const mapDispatchtoProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchtoProps)(SearchBar);
+export default connect(null, mapDispatchtoProps)(SearchBar);

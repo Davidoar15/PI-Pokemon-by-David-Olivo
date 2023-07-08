@@ -1,3 +1,4 @@
+const axios = require("axios");
 const { Op } = require("sequelize");
 const { Pokemon, Type } = require("../db");
 
@@ -33,7 +34,7 @@ function getPokemonByName(req, res) {
           ? res.status(200).json(pokemonData)
           : res.status(404).send(`${name} Not Found in DataBase`);
       } else {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${formattedName}`)
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=1281`)
           .then((response) => {
             if (response.ok) {
               return response.json();
@@ -41,22 +42,43 @@ function getPokemonByName(req, res) {
               throw new Error("Pokemon Not Found");
             }
           })
-          .then((pokemonData) => {
-            const pokemon = {
-              id: pokemonData.id,
-              name: pokemonData.name,
-              image: pokemonData.sprites.other["official-artwork"].front_default,
-              types: pokemonData.types.map((type) => type.type.name),
-              hp: pokemonData.stats[0].base_stat,
-              attack: pokemonData.stats[1].base_stat,
-              defense: pokemonData.stats[2].base_stat,
-              spcatk: pokemonData.stats[3].base_stat,
-              spcdef: pokemonData.stats[4].base_stat,
-              speed: pokemonData.stats[5].base_stat,
-              height: pokemonData.height,
-              weight: pokemonData.weight,
-            };
-            res.status(200).json([pokemon]);
+          .then((data) => {
+            const filteredPokemons = data.results.filter((pokemon) =>
+              pokemon.name.includes(formattedName)
+            );
+            return filteredPokemons;
+          })
+          .then(async (filteredPokemons) => {
+            const pkmnPromises = filteredPokemons.map(async (pokemon) => {
+              const response = await axios.get(pokemon.url);
+              const { id, name, sprites, stats, height, weight } = response.data;
+
+              const image = sprites.other['official-artwork'].front_default;
+              const types = response.data.types.map((type) => type.type.name);
+              const hp = stats[0].base_stat;
+              const attack = stats[1].base_stat;
+              const defense = stats[2].base_stat;
+              const spcatk = stats[3].base_stat;
+              const spcdef = stats[4].base_stat;
+              const speed = stats[5].base_stat;
+
+              return {
+                id,
+                name,
+                image,
+                types,
+                hp,
+                attack,
+                defense,
+                spcatk,
+                spcdef,
+                speed,
+                height,
+                weight
+              }
+            });
+            const pkmnList = await Promise.all(pkmnPromises); 
+            res.status(200).json(pkmnList);
           })
           .catch((error) => {
             return res.status(404).send(`${name} Not Found`);

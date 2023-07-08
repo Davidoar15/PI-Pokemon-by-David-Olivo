@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   pokemon: null,
-  pokemons: [],
+  //pokemons: [],
   getPkmns: [],
   filteredPokemons: [],
   isFilterActive: false,
@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
           currentPage: 1
         };
       }
-      const allPkmnType = [...state.pokemons, ...state.getPkmns];
+      const allPkmnType = [...state.getPkmns];
       const filteredByType = allPkmnType.filter(pokemon => pokemon.types.includes(action.payload));
       const uniqueFilteredByType = filteredByType.filter(
         (pokemon, index, self) =>
@@ -63,7 +63,7 @@ const reducer = (state = initialState, action) => {
           currentPage: 1
         };
       }
-      const allPkmnOrigin = [...state.pokemons, ...state.getPkmns];
+      const allPkmnOrigin = [...state.getPkmns];
       const filteredByOrigin = allPkmnOrigin.filter((pokemon) => {
         if (typeof pokemon.id === 'string') {
           return action.payload === "DB";
@@ -86,11 +86,12 @@ const reducer = (state = initialState, action) => {
       if (action.payload === "") {
         return {
           ...state,
-          pokemons: [...state.pokemons],
+          getPkmns: [...state.getPkmns],
+          //pokemons: [...state.pokemons],
           filteredPokemons: [...state.filteredPokemons]
         }
       }
-      const sortedByName = [...state.pokemons, ...state.getPkmns].sort((a, b) => {
+      const sortedByName = [...state.getPkmns].sort((a, b) => {
         if (action.payload === "A") {
           return a.name.localeCompare(b.name);
         } else if (action.payload === "D") {
@@ -107,7 +108,7 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: sortedByName,
+        getPkmns: sortedByName,
         filteredPokemons: sortedByNameInFiltered,
         currentPage: 1
       };
@@ -116,12 +117,12 @@ const reducer = (state = initialState, action) => {
       if (action.payload === "") {
         return {
           ...state,
-          pokemons: [...state.pokemons],
+          getPkmns: [...state.getPkmns],
           filteredPokemons: [...state.filteredPokemons]
         }
       }
       const { stat, order } = action.payload;
-      const sortedByStat = [...state.pokemons, ...state.getPkmns].sort((a, b) => {
+      const sortedByStat = [...state.getPkmns].sort((a, b) => {
         if (order === 'asc') {
           return a[stat] - b[stat];
         } else {
@@ -138,7 +139,7 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: sortedByStat,
+        getPkmns: sortedByStat,
         filteredPokemons: sortedByStatInFiltered,
         currentPage: 1
       };
@@ -152,7 +153,7 @@ const reducer = (state = initialState, action) => {
     case ADD_POKEMON:
       return {
         ...state,
-        pokemons: [action.payload, ...state.pokemons]
+        getPkmns: [...action.payload]
       }
 
     default:

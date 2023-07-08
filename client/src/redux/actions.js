@@ -37,7 +37,7 @@ export const getPokemonByName = (name) => {
       const response = await axios.get(`${endpoint.pkmn}/name?name=${name}`);
       if (response.status === 200) {
         const pokemonData = response.data;
-        const pokemon = pokemonData[0];
+        const pokemon = [...pokemonData];
         dispatch({ 
           type: 'GET_POKEMON_BY_NAME', 
           payload: pokemon
@@ -123,3 +123,17 @@ export const createPokemon = (pkmnFormData) => {
       }
     };
 };
+
+export const getPkmnName = (name) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${endpoint.pkmn}/verification?name=${name}`);
+      if (response.status === 200) {
+        const pkmnName = response.data
+        return pkmnName[0];
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}

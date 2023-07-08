@@ -15,7 +15,7 @@ function Home({ pokemons, getPkmns, getPokemons }) {
     }
   }, [getPkmns, getPokemons, initialFetch]);
 
-  const allPokemons = [...new Set([...pokemons, ...getPkmns])];
+  const allPokemons = [...new Set([...getPkmns])];
 
   return (
     <div className={style.Home}>
@@ -30,7 +30,6 @@ function Home({ pokemons, getPkmns, getPokemons }) {
 
 const mapStateToProps = (state) => {
   return {
-    pokemons: state.pokemons,
     getPkmns: state.getPkmns
   };
 };
