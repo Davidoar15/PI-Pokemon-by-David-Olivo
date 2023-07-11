@@ -153,7 +153,8 @@ const reducer = (state = initialState, action) => {
     case ADD_POKEMON:
       return {
         ...state,
-        getPkmns: [...action.payload]
+        getPkmns: [...action.payload],
+        currentPage: 1
       }
 
     default:
