@@ -10,7 +10,7 @@ function SearchBar({ getPokemonByName, addPokemon }) {
   const handleSearch = async (event) => {
     event.preventDefault()
     const pkmnFound = await getPokemonByName(searchPkmn);
-    if (pkmnFound.length === 0) {
+    if (!pkmnFound) {
       window.alert('No matches for this Search')
     } else {
       addPokemon(pkmnFound);
