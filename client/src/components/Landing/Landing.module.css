@@ -15,6 +15,7 @@
 
 .h1Landing {
     background-color: rgba(81, 148, 248, 0.7);
+    margin-top: 1px;
 }
 
 .infoLanding {
@@ -28,7 +29,7 @@
     width: 427px;
     height: 120px;
     text-align: justify;
-    background-color: rgba(81, 148, 248, 0.7);
+    background-color: rgba(81, 148, 248, 0.918);
     border: 2px solid white;
     border-radius: 20px;
     padding: 10px;
@@ -71,12 +72,12 @@
     margin-top: 150px;
     margin-left: 50px;
     margin-right: 50px;
-    background-color: rgba(81, 148, 248, 0.7);
+    background-color: rgba(81, 148, 248, 0.918);
     border-radius: 30px;
     transition: transform 0.7s ease;
 }
 .contactContainer:hover{
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 .contacts {

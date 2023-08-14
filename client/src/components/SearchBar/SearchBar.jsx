@@ -11,7 +11,7 @@ function SearchBar({ getPokemonByName, addPokemon }) {
     event.preventDefault()
     const pkmnFound = await getPokemonByName(searchPkmn);
     if (!pkmnFound) {
-      window.alert('No matches for this Search')
+      alert('No matches for this Search')
     } else {
       addPokemon(pkmnFound);
     }
